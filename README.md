@@ -25,10 +25,10 @@ Bu proje, kelime tahmin etme oyunu olan Hangman'ın bir Java Spring uygulaması 
    git clone https://github.com/M-Guney/hanging-man.git
 
 2. **Gerekli Kütüphaneleri Yükleyin:**:
-   *Gson
+   - Gson
    \hanging-man\src\main\resources\static\gson-2.10.1.jar
    Dizindeki jar dısyasını Project Structure kısmından eklemesini yapın
-     ya da
+   - ya da
    <dependency>
     <groupId>com.google.code.gson</groupId>
     <artifactId>gson</artifactId>
