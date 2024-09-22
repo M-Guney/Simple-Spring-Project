@@ -1,0 +1,12 @@
+{
+  "Hayvan": ["Kedi", "Köpek", "Aslan", "Kaplan", "Fil", "Zebra", "Kuş", "Yılan", "Balina", "Geyik"],
+  "Renk": ["Kırmızı", "Mavi", "Yeşil", "Sarı", "Turuncu", "Mor", "Pembe", "Siyah", "Beyaz", "Gri"],
+  "Meyve": ["Elma", "Armut", "Muz", "Çilek", "Portakal", "Karpuz", "Şeftali", "Kiraz", "Erik", "Ananas"],
+  "Şehir": ["İstanbul", "Ankara", "İzmir", "Bursa", "Antalya", "Adana", "Gaziantep", "Mersin", "Samsun", "Trabzon"],
+  "Ülke": ["Türkiye", "Almanya", "Fransa", "İtalya", "İspanya", "Rusya", "Brezilya", "Çin", "Hindistan", "Japonya"],
+  "Spor": ["Futbol", "Basketbol", "Voleybol", "Tenis", "Yüzme", "Koşu", "Bisiklet", "Güreş", "Boks", "Kayak"],
+  "Müzik Aleti": ["Gitar", "Piyano", "Keman", "Bateri", "Flüt", "Saksafon", "Klarnet", "Trompet", "Bağlama", "Mandolin"],
+  "Meslek": ["Doktor", "Mühendis", "Öğretmen", "Avukat", "Polis", "Hemşire", "Mimar", "Şoför", "Çiftçi", "Aşçı"],
+  "Bitki": ["Gül", "Lale", "Kaktüs", "Menekşe", "Papatya", "Orkide", "Zambak", "Bambu", "Karanfil", "Nane"],
+  "Yemek": ["Pilav", "Makarna", "Börek", "Kebap", "Dolma", "Çorba", "Karnıyarık", "Mantı", "Lahmacun", "Balık"]
+}

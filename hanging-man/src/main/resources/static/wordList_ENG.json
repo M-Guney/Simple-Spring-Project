@@ -1,0 +1,12 @@
+{
+  "Animal": ["Cat", "Dog", "Lion", "Tiger", "Elephant", "Zebra", "Bird", "Snake", "Whale", "Deer"],
+  "Color": ["Red", "Blue", "Green", "Yellow", "Orange", "Purple", "Pink", "Black", "White", "Gray"],
+  "Fruit": ["Apple", "Pear", "Banana", "Strawberry", "Orange", "Watermelon", "Peach", "Cherry", "Plum", "Pineapple"],
+  "City": ["Istanbul", "Ankara", "Izmir", "Bursa", "Antalya", "Adana", "Gaziantep", "Mersin", "Samsun", "Trabzon"],
+  "Country": ["Turkey", "Germany", "France", "Italy", "Spain", "Russia", "Brazil", "China", "India", "Japan"],
+  "Sport": ["Football", "Basketball", "Volleyball", "Tennis", "Swimming", "Running", "Cycling", "Wrestling", "Boxing", "Skiing"],
+  "Musical Instrument": ["Guitar", "Piano", "Violin", "Drums", "Flute", "Saxophone", "Clarinet", "Trumpet", "Baglama", "Mandolin"],
+  "Profession": ["Doctor", "Engineer", "Teacher", "Lawyer", "Police Officer", "Nurse", "Architect", "Driver", "Farmer", "Chef"],
+  "Plant": ["Rose", "Tulip", "Cactus", "Violet", "Daisy", "Orchid", "Lily", "Bamboo", "Carnation", "Mint"],
+  "Food": ["Rice", "Pasta", "Pastry", "Kebab", "Stuffed Vegetables", "Soup", "Stuffed Eggplant", "Dumplings", "Lahmacun", "Fish"]
+}

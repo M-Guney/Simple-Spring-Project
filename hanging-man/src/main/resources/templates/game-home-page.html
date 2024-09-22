@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HangingMan</title>
+    <style>
+        h2 {
+            font-family:cursive;
+            letter-spacing: 5px; /* Harfler arasındaki boşluğu artır */
+            font-size: 40px; /* Font boyutunu büyük yap */
+            margin-right: 20px; /* Harfler arasına büyük boşluklar ekle */
+            margin-bottom: 0px;
+            margin-top:0px;
+            font-weight: bold; /* Yazıyı kalınlaştır */
+            display: flex;
+            justify-content: center; /* Metni ortalar */
+            margin-top:0;
+        }
+
+        .warning, .completed {
+            color: #ff4c4c;          /* Default red color for warning */
+            font-size: 28px;         /* Large font size */
+            font-weight: bold;       /* Make the text bold */
+            text-align: center;      /* Center the text */
+            background-color: #ffe6e6; /* Light red background for warning */
+            border: 2px solid #ff0000; /* Red border for warning */
+            padding: 10px;           /* Add some padding around the text */
+            border-radius: 8px;      /* Rounded corners for the warning box */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            margin: 20px auto;       /* Center the box horizontally with margin */
+            max-width: 80%;          /* Restrict the maximum width of the box */
+            opacity: 0;              /* Start hidden */
+            transition: opacity 1s ease-out; /* Smooth fade-out effect */
+
+        }
+
+        #language-select {
+              padding: 10px;
+              border: 1px solid #ccc;
+              border-radius: 5px;
+            }
+
+        .completed {
+            color: #4caf50;          /* Green color for completed */
+            background-color: #e8f5e9; /* Light green background */
+            border: 2px solid #388e3c; /* Green border */
+        }
+
+        .show {
+            opacity: 1;              /* Fully visible */
+        }
+
+        .wordInfo {
+            margin-bottom: 0px;
+        }
+
+        div {
+            margin-top: 0px; /* Geçerli bir değer kullanın */
+        }
+
+        label {
+
+        }
+
+        #rewordButton,#notifyButton {
+            padding: 6px 10px;
+            font-size: 18px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            background-color: #2ecc71; /* Mavi renk */
+            color: white;
+            border: 2px solid #336633;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+}
+
+        #rewordButton:hover {
+            background-color: #3E8E3C;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <h1 align="center">Guess the word</h1>
+    <form action="/language-method" method="POST">
+        <label for="language-select">Choose Language:</label>
+        <select name="selectedLanguage" id="language-select">
+            <option value="ENG" th:selected="${selectedLanguage == 'ENG'}">English</option>
+            <option value="TR" th:selected="${selectedLanguage == 'TR'}">Türkçe</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!--    change word -->
+<!--    <select id="language-select" tabindex="-1">-->
+<!--        <option value="en">English</option>-->
+<!--        <option value="tr">Türkçe</option>-->
+<!--    </select>-->
+</div>
+<h2 align="center" th:text="${wordlenghtDashes}" id="word-dashes">show a random word here</h2>
+
+<div align="center" class="wordInfo">
+    <h3 align="center" th:text="'Category: '+ ' ' + ${wordCategory}" class="wordInfo">categories are here </h3>
+
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <h3 class="wordInfo" style="font-family: bold;">Try Remains:&nbsp;</h3> <!-- &nbsp; Non-breaking space -->
+        <h3 class="wordInfo" style="font-family: bold;" th:text="${tryRemains}" id="try-remains">try remains</h3>
+    </div>
+
+</div>
+<hr/>
+
+<div style="display: flex; justify-content: center; align-items: center; gap: 20px;"   >
+    <form action="game-home" method="GET">
+        <label>Guess a char:</label>
+        <input name="guessedChar" type="text" maxlength="1"  placeholder="Enter a letter" id="guessedChar"  />
+        <input type="submit" value="Try" id="notifyButton">
+    </form>
+    <form action="/refresh-word" method="post">
+        <input type="submit" value="Change Word" id="rewordButton">
+    </form>
+</div>
+
+<h1 class="completed" align="center" th:if="${completedMessage != null}" th:text="${completedMessage}">Completed message are here</h1>
+<h1 class="warning" align="center" th:if="${warningMessage != null}" th:text="${warningMessage}">Warnings are here</h1>
+
+
+<script>
+// Sayfa yüklendiğinde çalışacak fonksiyon
+window.onload = function() { // Sayfaya giriş yapıldığı anda herhangi bir tıklama beklemeden yazı yazmayı sağlar
+  // guessedChar isimli input'u bul
+  var guessedCharInput = document.getElementById("guessedChar");
+
+  // Input'a odaklan
+  guessedCharInput.focus();
+};
+
+// Bilgilendirme mesajlarının oluşturulması
+function showMessage() {
+            const warningElement = document.querySelector('.warning');
+            const completedElement = document.querySelector('.completed');
+
+            if (warningElement && warningElement.innerText) {
+                warningElement.classList.add('show');
+            }
+
+            if (completedElement && completedElement.innerText) {
+                completedElement.classList.add('show');
+                setTimeout(() => {
+                    completedElement.classList.remove('show');
+                    // After fading out, reset visibility and opacity
+                    setTimeout(() => {
+                        completedElement.style.visibility = 'hidden';
+                        completedElement.style.opacity = 0;
+                    }, 1500); // Ensure opacity transition completes
+                }, 2000); // Time to display before fading out
+            }
+        }
+        document.addEventListener('DOMContentLoaded', showMessage);
+
+
+/* <!-- Dil seçme kısmı tab ile seçilemez olsun-->
+<!--const selectElement = document.getElementById("language-select");-->
+<!--selectElement.tabIndex = -1;--> */
+
+</script>
+</body>
+</html>
