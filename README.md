@@ -1,6 +1,4 @@
 # Simple-Spring-Project
-I will upload some of my Java Spring projects
-
 ![Animation](https://github.com/M-Guney/Simple-Spring-Project/blob/main/Animation.gif?raw=true)
 
 # Hangman Game
